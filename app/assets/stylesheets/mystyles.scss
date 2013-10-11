@@ -1,0 +1,60 @@
+.container-full {
+  margin: 0 auto;
+  max-width: none !important;
+  width: 1280px;
+}
+
+divcenter{
+  margin: 0 auto;
+}
+
+button{
+  line-height: 1.5em;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.main-button{
+  background-color: #BADA55;
+  width: 250px;
+  border-color: whitesmoke;
+}
+
+nav.top-bar {
+  //width: 1280px;
+  //margin: 0 auto;
+  background-color: transparent;
+
+}
+
+.center{
+  text-align: center;
+}
+#head{
+  background-color: #BADA55;
+}
+
+.searchbox{
+  height: 300px;
+}
+h1{
+  font-size: 2.75em;
+}
+
+h1,h2,h3,h4,h5,h6{
+  text-align: center;
+}
+
+h1#logo {
+  font-size: 2em;
+  font-family: exo;
+}
+
+.menu-item a {
+  line-height: 30px;
+}
+
+@font-face {
+  font-family: exo;
+  src: url('/assets/exo/Exo-SemiBold.otf');
+}

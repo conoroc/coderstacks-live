@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  category_id: 1
+  type: 
+  source: MyString
+  level: MyString
+  year: 1
+
+two:
+  title: MyString
+  description: MyText
+  category_id: 1
+  type: 
+  source: MyString
+  level: MyString
+  year: 1

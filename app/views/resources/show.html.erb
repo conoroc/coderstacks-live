@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @resource.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @resource.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @resource.category_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @resource.type %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @resource.source %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @resource.level %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @resource.year %>
+</p>
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>
