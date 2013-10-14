@@ -15,9 +15,13 @@ button{
 }
 
 .main-button{
-  background-color: #BADA55;
+  background-color: #7CAC5C;
   width: 250px;
   border-color: whitesmoke;
+}
+
+.main-button:hover{
+  background-color: #6e9952;
 }
 
 nav.top-bar {
@@ -31,7 +35,7 @@ nav.top-bar {
   text-align: center;
 }
 #head{
-  background-color: #BADA55;
+  background-color: #7CAC5C;
 }
 
 .searchbox{
@@ -57,4 +61,13 @@ h1#logo {
 @font-face {
   font-family: exo;
   src: url('/assets/exo/Exo-SemiBold.otf');
+}
+
+.nav-right{
+  float: right;
+  line-height: 70px;
+}
+
+.nav-links{
+  float: left;
 }
