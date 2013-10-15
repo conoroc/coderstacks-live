@@ -3,10 +3,11 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 gem 'devise'
-gem 'compass-rails'
-gem 'zurb-foundation', '~> 4.0.0'
-gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
+gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'zurb-foundation'
+gem 'sqlite3'
+
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
