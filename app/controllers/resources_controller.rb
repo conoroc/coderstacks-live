@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:create, :new]
   # GET /resources
   # GET /resources.json
   def index
@@ -15,6 +15,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   def new
     @resource = Resource.new
+    @categories = Category.all
   end
 
   # GET /resources/1/edit

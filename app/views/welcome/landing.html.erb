@@ -7,21 +7,18 @@
      <div class="searchbox panel">
        <div class="slideshow-wrapper">
          <div id="featured" data-orbit>
-           <div>
-             <h2>Headline 1</h2>
-             <h3>Subheadline</h3>
-             <p>Pellentesque habitant morbi tristique senectus.</p>
-           </div>
-           <div>
-             <h2>Headline 2</h2>
-             <h3>Subheadline</h3>
-             <p>Pellentesque habitant morbi tristique senectus.</p>
-         </div>
-           <div>
-             <h2>Headline 3</h2>
-             <h3>Subheadline</h3>
-             <p>Pellentesque habitant morbi tristique senectus.</p>
-       </div>
+
+           <% @resources.each do |resource| %>
+               <div>
+               <h4> <%= resource.title %> </h4>
+               <div><%= resource.description %>  </div>
+               <%= resource.type %>
+               <%= resource.source %>
+               <%= resource.level %>
+               <%= resource.year %>
+
+                 </div>
+           <% end %>
      </div>
        </div>
      </div>

@@ -1,3 +1,5 @@
+<div class="container-full row">
+ <div class="small-4 small-centered columns panel">
 <%= form_for(@resource) do |f| %>
   <% if @resource.errors.any? %>
     <div id="error_explanation">
@@ -12,34 +14,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.number_field :category_id %>
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { :prompt => "--Select a Category--"},{:class => "small-3"} %>
   </div>
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.label :subcategory %>
+    <%= f.grouped_collection_select :subcategory_id,Category.order(:name), :subcategories,:name,:id,:name, {include_blank: true},{:class => "small-3"} %>
   </div>
   <div class="field">
-    <%= f.label :source %><br>
+    <%= f.label :source %>
     <%= f.text_field :source %>
   </div>
   <div class="field">
-    <%= f.label :level %><br>
-    <%= f.text_field :level %>
+    <%= f.label :level %>
+    <%= f.select :level, options_for_select([ 'Beginner','Intermediate', 'Advanced' ]), {}, {:class => "small-3"} %>
   </div>
   <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
+    <%= f.label :year %>
+    <%= f.select :year, options_for_select(2000..Time.now.year, :selected => Time.now.year), {}, {:class => "small-3"} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "small button success radius"%>
   </div>
 <% end %>
+ </div>
+ </div>

@@ -1,11 +1,15 @@
 
 @import "foundation/foundation-global";
-
+.actions{
+  padding: 0 auto;
+}
 .intro{
   background-color: #e1e1e1;
 }
 
-
+select{
+  margin-bottom: 10px;
+}
 
 .orbit-slide-number{
   display: none;
