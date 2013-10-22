@@ -28,15 +28,36 @@
       <div class="small-7 columns">
       <div class="row">
     <div class="small-12 columns">
-      <p>Coderstacks is a central library for the best web development learning resources on the web. Why trawl through hundreds of unknown resources when you can find the ones that have been tried and tested by others right in one place</p>
-      <button class="small radius main-button" >Go To Mobile Resources</button>
+      <p>Coderstacks is a central library for the best web development learning resources on the web. Don't trawl through hundreds of unknown resources when you can find the ones that have been tried and tested by others right in one place</p>
+      <button class="small radius main-button" >Browse Resources</button>
 
     </div>
       </div>
       <div class="row">
       <div class="small-12 columns">
-        <div class="panel"></div>
+        <div class="panel">
 
+          <%= search_form_for @search do |f| %>
+              <%= f.label :title_cont, "Title:" %>
+              <%= f.text_field :title_cont, class: "" %>
+
+
+              <%= f.label :year_gteq, "Not Older Than:" %>
+              <%= f.text_field :year_gteq, class: "" %>
+
+
+              <%= f.label :category_id_eq, "Category:" %>
+              <%= f.select :category_id_eq, [['  --  ', ''], ['Web Design', 1], ['Programming', 2], ['Business', 3], ['Mobil Development', 4]] %>
+              <br/>
+              <br/>
+
+              <%= f.label :level_eq, "Level:" %>
+              <%= f.select :level_eq, [['Beginner', 'Beginner'], ['Intermediate', 'Intermediate'],['Advanced', 'Advanced'],], class: "input-medium search-query" %>
+
+              <%= f.submit "Search", class: "btn btn-large btn-inverse" %>
+          <% end %>
+
+        </div>
 
       </div>
       </div>
@@ -61,7 +82,7 @@
       <div class="panel">
       <h3>Programming</h3>
       <p class="center">The resources you need to unboggle your mind. This includes the main programing languages and back end know-how.</p>
-      <button class="small secondary radius" >Go To Mobile Resources</button>
+      <button class="small secondary radius" ><%= link_to "Go To Programming Resources", category_path(2) %></button>
     </div>
 </div>
     <div class="small-3 columns">

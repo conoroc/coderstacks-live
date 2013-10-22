@@ -1,6 +1,6 @@
 <div class="container-full row">
  <div class="small-4 small-centered columns panel">
-<%= form_for(@resource) do |f| %>
+<%= form_for @resource,:html => {:multipart => true} do |f| %>
   <% if @resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
@@ -17,22 +17,40 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
+       <div class="field">
+         <%= f.label :link %>
+         <%= f.text_field :link %>
+       </div>
   <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
+       <div class="field">
+
+         <%= f.label :medium %>
+         <%= f.select :medium, options_for_select([['Book','1'],['Video','2'],['Blog-Tutorial','3'],['Article','4'],['Video-Tutorial','5'],['Tutorial-Exercises','6']]), {}, {:class => "small-3"} %>
+       </div>
   <div class="field">
     <%= f.label :category_id %>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { :prompt => "--Select a Category--"},{:class => "small-3"} %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { :prompt => "--Select a Category--"},{:class => "small-4"} %>
   </div>
   <div class="field">
-    <%= f.label :subcategory %>
-    <%= f.grouped_collection_select :subcategory_id,Category.order(:name), :subcategories,:name,:id,:name, {include_blank: true},{:class => "small-3"} %>
+    <%= f.label :subcategory_id %>
+    <%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, {include_blank: true},{:class => "small-3"} %>
   </div>
   <div class="field">
     <%= f.label :source %>
     <%= f.text_field :source %>
   </div>
+       <div class="field">
+         <%= f.label :rating %>
+         <%= f.select :rating, options_for_select(1..10), {}, {:class => "small-3"} %>
+       </div>
+
+       <div>
+         <%= f.label :image %>
+         <%= f.file_field :image %>
+       </div>
   <div class="field">
     <%= f.label :level %>
     <%= f.select :level, options_for_select([ 'Beginner','Intermediate', 'Advanced' ]), {}, {:class => "small-3"} %>

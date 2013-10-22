@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  resource_id: 
+  user_id: 
+  score: 1
+  default: 
+
+two:
+  resource_id: 
+  user_id: 
+  score: 1
+  default: 

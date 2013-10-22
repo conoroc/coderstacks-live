@@ -1,7 +1,14 @@
 class Resource < ActiveRecord::Base
 
+  has_many :likes
+  belongs_to :user
+  belongs_to :subcategory
+  #belongs_to :category, :through => :subcategory
+  delegate :category, :to => :subcategory
 
+  mount_uploader :image, ImageUploader
 
-  has_many :subcategories
-  has_one :category, :through => :subcategories
+  def average_rating
+    ratings.sum(:score) / ratings.size
+  end
 end

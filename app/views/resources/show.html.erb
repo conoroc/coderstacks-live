@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<div class="res-image-show">
+<% if @resource.image? %>
+    <%= image_tag(@resource.image_url, :class => "") %>
+<% else %>
+    <%= image_tag('CS.gif', :class => "") %>
+<% end %>
+</div>
 <p>
   <strong>Title:</strong>
   <%= @resource.title %>
@@ -12,12 +18,17 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @resource.category_id %>
+  <%= @resource.category.name %>
+</p>
+<p>
+  <strong>Category:</strong>
+  <%= @resource.subcategory.name %>
 </p>
 
 <p>
+
   <strong>Type:</strong>
-  <%= @resource.type %>
+  <%= medium_texter(@resource.medium) %>
 </p>
 
 <p>
@@ -34,6 +45,21 @@
   <strong>Year:</strong>
   <%= @resource.year %>
 </p>
+
+<div id='likes'>
+  <span class="label label-success like_counter">Likes <i class="icon-thumbs-up"></i><%= @resource.likes.count %></span>
+  <% if user_likes(current_user, @resource.id) %>
+
+      <%= render 'likes' %>
+
+  <% end %>
+</div>
+
+<p>Averate rating</p>
+<div id="star"></div>
+
+<p>Your rating</p>
+<div id="user_star"></div>
 
 <%= link_to 'Edit', edit_resource_path(@resource) %> |
 <%= link_to 'Back', resources_path %>

@@ -4,12 +4,17 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    @search = Resource.search(params[:q])
+    #@resources = Resource.all
+    @resources = @search.result(distinct: true)
   end
 
   # GET /resources/1
   # GET /resources/1.json
   def show
+    session[:user_return_to] = resource_path(@resource)
+    #@resource = Resource.find(params[:id])
+    #@rating = Rating.where(resource_id: @resource.id, user_id: @current_user.id).first unless @rating
   end
 
   # GET /resources/new
@@ -70,6 +75,6 @@ class ResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(:resource).permit(:title, :description, :category_id, :type, :source, :level, :year)
+      params.require(:resource).permit(:title, :description, :category_id, :subcategory_id, :rating, :type, :source, :level, :year, :image, :link, :medium)
     end
 end

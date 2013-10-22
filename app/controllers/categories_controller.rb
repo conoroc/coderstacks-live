@@ -10,6 +10,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+
+    @search = @category.resources.search(params[:q])
+    @resources = @search.result(distinct: true)
   end
 
   # GET /categories/new
