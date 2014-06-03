@@ -37,11 +37,28 @@ ActiveRecord::Schema.define(version: 20131021133715376) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+  end
+
   create_table "likes", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "resource_id"
     t.integer  "user_id"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rates", force: true do |t|
@@ -83,6 +100,9 @@ ActiveRecord::Schema.define(version: 20131021133715376) do
     t.string   "image"
     t.string   "link"
     t.integer  "medium"
+    t.integer  "user_id"
+    t.string   "cost"
+    t.integer  "likes_count"
   end
 
   create_table "subcategories", force: true do |t|
@@ -105,6 +125,7 @@ ActiveRecord::Schema.define(version: 20131021133715376) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

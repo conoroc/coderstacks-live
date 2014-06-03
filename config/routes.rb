@@ -3,16 +3,19 @@ Coder::Application.routes.draw do
   resources :likes
 
   devise_for :admins
-
-
   devise_for :users, :controllers => {sessions: 'sessions'}
-  resources :resources do
+  resources :users, :only => [:show]
 
+  resources :resources do
     resources :likes
+    resources :posts do
+      resources :comments
+    end
   end
 
 
   resources :categories
+  resources :subcategories
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -54,7 +57,7 @@ Coder::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

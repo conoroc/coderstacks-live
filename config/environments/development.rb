@@ -29,8 +29,7 @@ Coder::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  ENV['S3_SECRET'] = "EyhSuBPBfjXciZoXif3MDX5+mg/74MIKqJcr0b1Z"
-  ENV['S3_KEY'] = "AKIAIGKFVIPYK7LFW7OA"
+
   ENV['S3_BUCKET_NAME']= "coderstacks"
   ENV['S3_REGION']="eu-west-1"
 

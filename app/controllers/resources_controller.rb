@@ -3,6 +3,8 @@ class ResourcesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :new]
   # GET /resources
   # GET /resources.json
+
+
   def index
     @search = Resource.search(params[:q])
     #@resources = Resource.all
@@ -13,6 +15,9 @@ class ResourcesController < ApplicationController
   # GET /resources/1.json
   def show
     session[:user_return_to] = resource_path(@resource)
+    @search = Resource.search(params[:q])
+    #@resources = Resource.all
+    @resources = @search.result.limit(5)
     #@resource = Resource.find(params[:id])
     #@rating = Rating.where(resource_id: @resource.id, user_id: @current_user.id).first unless @rating
   end
@@ -30,7 +35,7 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new(resource_params)
+    @resource = current_user.resources.new(resource_params)
 
     respond_to do |format|
       if @resource.save
@@ -68,13 +73,13 @@ class ResourcesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_resource
-      @resource = Resource.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_resource
+    @resource = Resource.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def resource_params
-      params.require(:resource).permit(:title, :description, :category_id, :subcategory_id, :rating, :type, :source, :level, :year, :image, :link, :medium)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def resource_params
+    params.require(:resource).permit(:title, :description, :cost, :category_id, :subcategory_id, :rating, :type, :source, :level, :year, :image, :link, :medium, :user_id)
+  end
 end

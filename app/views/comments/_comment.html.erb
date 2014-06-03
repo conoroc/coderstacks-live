@@ -1,0 +1,16 @@
+<div class=reply-grow>
+<div class="reply-single">
+
+  <div class="reply-info">
+    <div class="comment-img">
+
+    <%= image_tag('default-user.jpg',  :class => "img-user") %>
+
+
+  </div>
+    <b><%= comment.user.username %></b><small class="tiny"> (<%= time_ago_in_words(comment.created_at) %> ago)</small>
+  </div>
+  <div class="reply-content"><%= comment.content %> </div>
+
+</div>
+</div>

@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  time:
+   formats:
+    your_format: "%a, %b #{time.day.ordinalize}"
+    your_another_format: '%I:%M'

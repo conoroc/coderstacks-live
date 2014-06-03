@@ -1,0 +1,43 @@
+<div id="comment<%=(post.id)%>" class="panel">
+  <div class="post-container ">
+    <div class="post-info">
+  <div class="comment-img">
+
+        <%= image_tag('default-user.jpg',  :class => "img-user") %>
+
+
+  </div>
+  <div class="commentname"><b><%= post.user.username %></b><small class="tiny"> (<%= time_ago_in_words(post.created_at) %> ago)</small></div>
+    </div>
+      <div class="post-content">
+  <%= post.content %>
+
+
+  <% if current_user?(post.user) %>
+      <%= link_to 'Delete', resource_post_path(@resource, post), :confirm => 'Are you sure?', :method => :delete %>
+  <% end %>
+  </div>
+  </div>
+
+
+    <div class="reply-container">
+  <% unless post.comments.empty? %>
+      <ul class="nested_comment">
+        <%= render post.comments %>
+      </ul>
+  <% end %>
+
+  <% if post %>
+      <%= form_for([@resource, post, post.comments.build], id: "posts")  do |f| %>
+          <div>
+            <%= f.label 'Add a Reply' %>
+            <%= f.text_area :content, :cols => 20, :rows => 2, :id => 'commtxt' %>
+          </div>
+
+          <p><%= f.submit "Reply", class: 'btn btn-info'%></p>
+      <% end %>
+
+  <% end %>
+
+  </div>
+</div>

@@ -1,24 +1,48 @@
  <div class="intro">
 <div class="row container-full">
-  <div class="small-12 columns">
+  <div class="small-12 columns behind">
     <h1 class="center">Web Learning Repository</h1>
     <div class="row">
     <div class="small-5 columns">
      <div class="searchbox panel">
-       <div class="slideshow-wrapper">
-         <div id="featured" data-orbit>
+       <div class="container-slider">
+         <div id="slides">
 
            <% @resources.each do |resource| %>
+
                <div>
-               <h4> <%= resource.title %> </h4>
-               <div><%= resource.description %>  </div>
-               <%= resource.type %>
-               <%= resource.source %>
-               <%= resource.level %>
-               <%= resource.year %>
+                 <%= link_to(resource_path(resource)) do  %>
+                 <div class="orbit-top">
+                 <div class="info-orbit">
+                   <div class="orbit-title">
+                 <h4> <%= truncate(resource.title, length: 50) %> </h4>
+                   </div>
+                 <div class="description"><%= truncate(resource.description,length: 155) %>  </div>
+               </div>
+                 <div class="res-image-orbit">
+                   <% if resource.image? %>
+                       <%= image_tag(resource.image_url, :class => "") %>
+                   <% else %>
+                       <%= image_tag('CS.gif', :class => "") %>
+                   <% end %>
+                 </div>
+                   <div class="pairs">
+                     <%= resource.subcategory.name %>
+
+                   </div>
+                 </div>
+                 <% end %>
+                 <div class="orbit-bottom">
+                 <div class="orbit-added"><p>Added by <span><%= resource.user.username %></span> | <%= nice_time(resource.created_at) %><span>Comments  <%= resource.posts.count %></span></p></div>
+                   <div class="orbit-likes">
+                   <span> <i class="fa fa-thumbs-o-up fa-lg">     </i><%= resource.likes.count %>  </span>
+                     <div class="slide-nav"></div>
+                   </div>
+                 </div>
 
                  </div>
            <% end %>
+
      </div>
        </div>
      </div>
@@ -27,54 +51,76 @@
 
       <div class="small-7 columns">
       <div class="row">
-    <div class="small-12 columns">
-      <p>Coderstacks is a central library for the best web development learning resources on the web. Don't trawl through hundreds of unknown resources when you can find the ones that have been tried and tested by others right in one place</p>
-      <button class="small radius main-button" >Browse Resources</button>
+    <div class="small-12 columns about">
+
+      <p class="about">Coderstacks is a central library for the best web development learning resources on the web. Don't trawl through hundreds of unknown resources when you can find the ones that have been tried and tested by others right in one place</p>
+
 
     </div>
       </div>
       <div class="row">
       <div class="small-12 columns">
-        <div class="panel">
+        <div class="panel home-search-panel">
 
           <%= search_form_for @search do |f| %>
-              <%= f.label :title_cont, "Title:" %>
-              <%= f.text_field :title_cont, class: "" %>
 
-
+              <div class="search-fields">
               <%= f.label :year_gteq, "Not Older Than:" %>
-              <%= f.text_field :year_gteq, class: "" %>
-
-
+              <%= f.select :year_gteq, options_for_select((2000..2013).to_a.map{|s| [s, s]}),:include_blank => "Select Year" %>
+              </div>
+              <div class="search-fields">
               <%= f.label :category_id_eq, "Category:" %>
-              <%= f.select :category_id_eq, [['  --  ', ''], ['Web Design', 1], ['Programming', 2], ['Business', 3], ['Mobil Development', 4]] %>
-              <br/>
-              <br/>
-
+              <%= f.select :category_id_eq, options_for_select([['Web Design', 1], ['Programming', 2], ['Business', 3], ['Mobil Development', 4]]),:include_blank => "Select Category" %>
+              </div>
+              <div class="search-fields">
               <%= f.label :level_eq, "Level:" %>
-              <%= f.select :level_eq, [['Beginner', 'Beginner'], ['Intermediate', 'Intermediate'],['Advanced', 'Advanced'],], class: "input-medium search-query" %>
+              <%= f.select :level_eq, options_for_select([['Beginner', 'Beginner'], ['Intermediate', 'Intermediate'], ['Advanced', 'Advanced']]),:include_blank => "Select Level" %>
+              </div>
+              <div class="search-fields">
+                <%= f.label "Title/Description:" %>
+                <%= f.text_field :title_or_description_cont%>
+              </div>
+              <div class="search-fields">
+                <%= f.label "Source:" %>
+                <%= f.text_field :source_cont%>
+              </div>
+              <div class="search-fields">
+                <%= f.label "Cost" %>
+                <%= f.select :cost_cont, options_for_select([['Free', 'Free'],['Subscription', 'Subscription']]),:include_blank => "Select Cost" %>
+              </div>
+              <div class="search-fields">
+                <%= f.label "Medium" %>
+                <%= f.select :medium_eq, options_for_select([["Book",1],["Video",2],["Blog-Tutorial",3],["Article",4],["Video-Tutorial",5],["Tutorial-Exercises",6]]),:include_blank => "Select Medium" %>
+              </div>
 
-              <%= f.submit "Search", class: "btn btn-large btn-inverse" %>
+
+
+              <div class="search-button-container">
+              <%= f.submit "Search", class: "button search-button" %>
+              </div>
           <% end %>
 
         </div>
+      </div>
 
       </div>
+
       </div>
-      </div>
+      <button class="large radius main-button"><%= link_to "Browse Resources", resources_path%></button>
+
     </div>
   </div>
 
 </div>
  </div>
- <div class="home-categories">
+ <div class="home-categories-band">
    <div class="row container-full">
 
 
     <div class="small-3 columns">
       <div class="panel">
       <h3>Design</h3>
-      <p class="center">All design related resources to help you learn how to make your front-end as good looking and user friendly as you are.</p>
+      <p class="center">Find all our design related resources to help you learn how to make your front-end as good looking and user friendly as you are.</p>
       <button class="small success radius" >Go To Mobile Resources</button>
     </div>
     </div>
@@ -82,7 +128,7 @@
       <div class="panel">
       <h3>Programming</h3>
       <p class="center">The resources you need to unboggle your mind. This includes the main programing languages and back end know-how.</p>
-      <button class="small secondary radius" ><%= link_to "Go To Programming Resources", category_path(2) %></button>
+      <button class="small success radius" ><%= link_to "Go To Programming Resources", category_path(2), class: "small secondary radius" %></button>
     </div>
 </div>
     <div class="small-3 columns">
