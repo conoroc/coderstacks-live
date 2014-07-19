@@ -15,9 +15,9 @@ class ResourcesController < ApplicationController
   # GET /resources/1.json
   def show
     session[:user_return_to] = resource_path(@resource)
-    @search = Resource.search(params[:q])
     #@resources = Resource.all
-    @resources = @search.result.limit(5)
+    @resources = Resource.limit(5)
+    @resources_with_likes = @resources.with_likes
     #@resource = Resource.find(params[:id])
     #@rating = Rating.where(resource_id: @resource.id, user_id: @current_user.id).first unless @rating
   end

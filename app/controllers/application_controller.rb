@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def signed_in_admin?
+    current_user.admin?
+  end
+
   def store_location
     session[:user_return_to] = request.url
   end

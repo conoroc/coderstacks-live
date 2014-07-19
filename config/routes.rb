@@ -2,7 +2,6 @@ Coder::Application.routes.draw do
 
   resources :likes
 
-  devise_for :admins
   devise_for :users, :controllers => {sessions: 'sessions'}
   resources :users, :only => [:show]
 
