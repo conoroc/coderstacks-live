@@ -1,0 +1,82 @@
+<div class="well clearfix">
+  <h6>Categories</h6>
+
+
+  <div class="side-menu">
+    <div class="list-group" id="accordion">
+      <%= hidden_field_tag "foo", @resource_subcat_id, {:id => "foo"} %>
+      <div class="panel list-group-item">
+        <div class="panel-heading">
+          <a data-parent="#accordion" data-toggle="collapse" href="#group-collapse2">
+            Programming
+          </a>
+        </div>
+        <div class="collapse panel-collapse" id="group-collapse2">
+          <div class="panel-body menu-subcats">
+            <span class="subcategory_1"><%= link_to "Ruby", subcategory_path(1) %></span>
+            <span class="subcategory_2"><%= link_to "PHP", subcategory_path(2) %></span>
+            <span class="subcategory_3"><%= link_to "Rails", subcategory_path(3) %></span>
+            <span class="subcategory_4"><%= link_to "Javascript", subcategory_path(4) %></span>
+            <span class="subcategory_11"><%= link_to "Deployment", subcategory_path(11) %></span>
+            <span class="subcategory_12"><%= link_to "Java", subcategory_path(12) %></span>
+            <span class="subcategory_13"><%= link_to "Database", subcategory_path(13) %></span>
+            <span class="subcategory_14"><%= link_to "Git", subcategory_path(14) %></span>
+            <span class="subcategory_19"><%= link_to "Misc", subcategory_path(19) %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel list-group-item">
+        <div class="panel-heading">
+          <a data-parent="#accordion" data-toggle="collapse" href="#group-collapse3">
+            Design
+          </a>
+        </div>
+        <div class="collapse panel-collapse" id="group-collapse3">
+          <div class="panel-body menu-subcats">
+            <span class="subcategory_5"><%= link_to "CSS", subcategory_path(5) %></span>
+            <span class="subcategory_6"><%= link_to "Aesthetics", subcategory_path(6) %></span>
+            <span class="subcategory_15"><%= link_to "Wordpress", subcategory_path(15) %></span>
+            <span class="subcategory_16"><%= link_to "HTML", subcategory_path(16) %></span>
+            <span class="subcategory_17"><%= link_to "Photoshop", subcategory_path(17) %></span>
+            <span class="subcategory_18"><%= link_to "Misc", subcategory_path(18) %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel list-group-item">
+        <div class="panel-heading">
+          <a data-parent="#accordion" data-toggle="collapse" href="#group-collapse4">
+            Business
+          </a>
+        </div>
+        <div class="collapse panel-collapse" id="group-collapse4">
+          <div class="panel-body menu-subcats">
+            <span class="subcategory_9"><%= link_to "Startups", subcategory_path(9) %></span>
+            <span class="subcategory_10"><%= link_to "Marketing", subcategory_path(10) %></span>
+            <span class="subcategory_20"><%= link_to "Misc", subcategory_path(20) %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel list-group-item">
+        <div class="panel-heading">
+          <a data-parent="#accordion" data-toggle="collapse" href="#group-collapse5">
+            Mobile
+          </a>
+        </div>
+
+        <div class="collapse panel-collapse" id="group-collapse5">
+          <div class="panel-body menu-subcats">
+            <span class="subcategory_7"><%= link_to "Android", subcategory_path(7) %></span>
+            <span class="subcategory_8"><%= link_to "IOS", subcategory_path(8) %></span>
+            <span class="subcategory_21"><%= link_to "Misc", subcategory_path(21) %></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

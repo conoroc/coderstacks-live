@@ -1,0 +1,10 @@
+$(function() {
+
+  var subCat = $('#foo').val();
+  var SubCatClass = ".subcategory_" + subCat;
+  $(SubCatClass).closest(".collapse").addClass("in");
+  $(SubCatClass).addClass("current-subcat");
+
+});
+
+console.log('test');

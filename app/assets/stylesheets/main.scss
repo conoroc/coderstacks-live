@@ -1,0 +1,82 @@
+
+// MASTER //
+
+body {
+  padding-top: 51px;
+}
+
+.main-content {
+  margin-top: 20px;
+}
+
+.img-wrapper {
+  img {
+    height: 100px;
+    width: 100px;
+  }
+
+}
+
+
+
+// NAVBAR //
+
+
+// MODALS //
+
+#myModal{
+  position: absolute;
+  top: 100%;
+  left: 35%;
+  width: 400px;
+  margin: 0 auto 0 auto;
+
+}
+
+
+// SIDE NAV //
+
+
+.side-menu {
+   //width: 150px;
+  .menu-subcats {
+    span {
+      width: 70px;
+      float: left;
+      border-top: 1px solid #ebeef5;
+    }
+  }
+  .current-subcat{
+    background-color: grey;
+  }
+}
+
+
+// WELCOME //
+
+.list-resource {
+  .img-wrapper {
+    img {
+      height: 100px;
+      width: 100px;
+    }
+
+  }
+}
+
+
+// RESOURCES //
+
+
+
+
+// SINGLE RESOURCE //
+
+
+
+
+// LATEST //
+
+
+
+

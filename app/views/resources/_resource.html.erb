@@ -1,0 +1,51 @@
+<div class="well">
+  <div class="row">
+    <div class="col-md-8">
+      <%= @resource.title %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to "#{@resource.category.name} / #{@resource.subcategory.name}", subcategory_path(@resource.subcategory.id) %>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+
+      <% if @resource.image? %>
+          <%= image_tag(@resource.image_url, :class => "img-thumbnail") %>
+      <% else %>
+          <%= image_tag('CS.gif', :class => "img-thumbnail") %>
+      <% end %>
+    </div>
+
+    <div class="col-md-10">
+      <%= @resource.description %>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= @resource.source %>
+    </div>
+    <div class="col-md-6">
+      <%= @resource.level %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= @resource.cost %>
+    </div>
+    <div class="col-md-6">
+      <%= @resource.year %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= medium_texter(@resource.medium) %>
+    </div>
+    <div class="col-md-6">
+      <%= @resource.user.username %> | <%= nice_time(@resource.created_at) %>
+    </div>
+  </div>
+
+</div>
