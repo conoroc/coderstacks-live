@@ -13,6 +13,7 @@ Coder::Application.routes.draw do
   end
 
 
+
   resources :categories
   resources :subcategories
 
@@ -22,6 +23,7 @@ Coder::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#landing'
 
+  match 'remote_sign_up', to: 'remote_devise#remote_sign_up', via: [:get]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

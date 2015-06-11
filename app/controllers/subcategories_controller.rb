@@ -13,6 +13,7 @@ class SubcategoriesController < ApplicationController
 
     @search = @subcategory.resources.search(params[:q])
     @resources = @search.result(distinct: true)
+    @resource_subcat_id = @subcategory.id
   end
 
   # GET /categories/new

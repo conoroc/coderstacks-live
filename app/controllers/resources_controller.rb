@@ -18,7 +18,8 @@ class ResourcesController < ApplicationController
     #@resources = Resource.all
     @resources = Resource.limit(5)
     @resources_with_likes = @resources.with_likes
-    #@resource = Resource.find(params[:id])
+
+    @resource_subcat_id = @resource.subcategory.id
     #@rating = Rating.where(resource_id: @resource.id, user_id: @current_user.id).first unless @rating
   end
 
@@ -30,6 +31,7 @@ class ResourcesController < ApplicationController
 
   # GET /resources/1/edit
   def edit
+    @resource = Resource.find(params[:id])
   end
 
   # POST /resources
@@ -51,6 +53,8 @@ class ResourcesController < ApplicationController
   # PATCH/PUT /resources/1
   # PATCH/PUT /resources/1.json
   def update
+    @resource = Resource.find(params[:id])
+
     respond_to do |format|
       if @resource.update(resource_params)
         format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }

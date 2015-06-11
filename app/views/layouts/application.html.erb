@@ -27,80 +27,82 @@
 </head>
 
 <body>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"></div>
+
 <!-- Header -->
-<header id="head">
-  <div class="container-full">
 
-    <nav class="top-bar">
-      <ul class="title-area left">
-        <li class="name">
-          <h1 id="logo"><%= link_to "CoderStacks", root_path %></h1>
-        </li>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "CoderStacks", root_path, :class => 'navbar-brand' %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Resources", resources_path %></li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li >Signed in as <%= current_user.email %>   </li>
+          <% end %>
+        <% if user_signed_in? %>
+          <li> <%= link_to "Add Resource", new_resource_path %> </li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Your Account<span class="caret"></span></a>
 
+          <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Your Profile</a></li>
+          <li><a href="#">Your Account</a></li>
+          <li><a href="#">Edit</a></li>
+          </ul>
+          </li>
+          <li> <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+            <% else %>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <li><%= link_to "Log in", new_user_session_path, :remote => true %> </li>
+            <% end %>
       </ul>
-
-
-      <ul class="nav-right">
-        <li class="searchtop cent">
-
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
           <%= search_form_for @search do |f| %>
 
-              <%= f.text_field :title_or_description_cont, :placeholder => "Search..." %>
+            <%= f.text_field :title_or_description_cont, :class => "form-control", :placeholder => "Search..." %>
+            <button id='top-search-go' type="submit" class="btn btn-success">Search</button>
 
-
-              <button id='top-search-go' type="submit" >
-                     <i class="fa fa-search"></i>
-              </button>
           <% end %>
-        </li>
-        <li class="nav-links"> <%= link_to "Resources", resources_path %> </li>
-        <% if user_signed_in? && current_user.admin? %>
-            <li class="nav-links">Signed in as <%= current_user.email %>   </li>
-        <% end %>
 
-        <% if user_signed_in? %>
-          <li class="nav-links"> <%= link_to "Add Resource", new_resource_path %> </li>
-            <li class='nav-links'><a href="#" data-dropdown="account-drop">Your Account</a>
-               <ul id="account-drop" class="f-dropdown">
-                 <li><a href="#" >Your Profile</a></li>
-                 <li><a href="#" >Your Account</a></li>
-                 <li><a href="#" >Edit</a></li>
-               </ul>
-            </li>
-            <li class="nav-links"> <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-        <% else %>
-            <li class="nav-links"><%= link_to "Register", new_user_registration_path %>
-              <span> or </span> <%= link_to "Log in", new_user_session_path, :remote => true %> </li>
-        <% end %>
 
-      </ul>
+        </div>
 
-    </nav>
-
+      </form>
+    </div>
   </div>
-</header>
-<div class="modal-container">
-  <div id="myModal" class="reveal-modal">
-    <h2>Awesome. I have it.</h2>
+</nav>
 
-    <p class="lead">Your couch. It is mine.</p>
 
-    <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
-    <a class="close-reveal-modal">&#215;</a>
-  </div>
-</div>
+
+
+
+
+
 <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :class => "alert-box #{name}" %>
+  <%= content_tag :div, msg, :class => "alert-box #{name}" %>
 <% end %>
 
 <!-- Main Content -->
-<div class="behind">
+<div class="main-content">
 
   <%= yield %>
 
-
 </div>
 
+
+
 <%= javascript_include_tag "application" %>
+
 </body>
+
 </html>

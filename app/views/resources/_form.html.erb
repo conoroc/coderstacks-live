@@ -34,7 +34,7 @@
     <%= f.label :category_id %>
     <%= f.collection_select :category_id, Category.order(:name), :id, :name, { :prompt => "--Select a Category--"},{:class => "small-4"} %>
   </div>
-  <div class="field">
+  <div class="field subcat-field">
     <%= f.label :subcategory_id %>
     <%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, {include_blank: true},{:class => "small-3"} %>
   </div>

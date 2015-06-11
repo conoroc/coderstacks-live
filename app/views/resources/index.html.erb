@@ -1,134 +1,14 @@
-<div class="resources-band">
-<div class="container-full row">
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-2">
+      <%= render 'layouts/sidenav' %>
+    </div>
+    <div class="col-md-10">
+      <%= render 'resources/resources' %>
+    </div>
 
 
-<h1>Listing resources</h1>
-
-  <div class="small-12 columns">
-   <div class="row">
-     <div class="small-2 columns">
-       <div class="">
-
-       <h6>Categories</h6>
-
-
-         <div id="accordion" class="ui-accordion ui-widget ui-helper-reset">
-
-             <h6 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Programming</h6>
-             <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-               <ul>
-                 <li><%= link_to "Ruby", subcategory_path(1) %></li>
-                 <li><%= link_to "PHP", subcategory_path(2) %></li>
-                 <li><%= link_to "Rails", subcategory_path(3) %></li>
-                 <li><%= link_to "Javascript", subcategory_path(4) %></li>
-                 <li><%= link_to "Deployment", subcategory_path(11) %></li>
-                 <li><%= link_to "Java", subcategory_path(12) %></li>
-                 <li><%= link_to "Database", subcategory_path(13) %></li>
-                 <li><%= link_to "Git", subcategory_path(14) %></li>
-                 <li><%= link_to "Misc", subcategory_path(19) %></li>
-               </ul>
-             </div>
-
-
-
-           <h6 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Design</h6>
-           <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-               <ul>
-                 <li><%= link_to "CSS", subcategory_path(5) %></li>
-                 <li><%= link_to "Aesthetics", subcategory_path(6) %></li>
-                 <li><%= link_to "Wordpress", subcategory_path(15) %></li>
-                 <li><%= link_to "HTML", subcategory_path(16) %></li>
-                 <li><%= link_to "Photoshop", subcategory_path(17) %></li>
-                 <li><%= link_to "Misc", subcategory_path(18) %></li>
-               </ul>
-             </div>
-
-
-
-           <h6 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Business</h6>
-           <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-               <ul>
-                 <li><%= link_to "Startups", subcategory_path(9) %></li>
-                 <li><%= link_to "Marketing", subcategory_path(10) %></li>
-                 <li><%= link_to "Misc", subcategory_path(20) %></li>
-               </ul>
-             </div>
-
-
-
-
-
-
-           <h6 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Mobile</h6>
-           <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
-               <ul>
-                 <li><%= link_to "Android", subcategory_path(7) %></li>
-                 <li><%= link_to "IOS", subcategory_path(8) %></li>
-                 <li><%= link_to "Misc", subcategory_path(21) %></li>
-               </ul>
-             </div>
-
-
-         </div>
-
-
-
-
-       </div>
-     </div>
-     <div class="small-10 columns res-index-container">
- <% @resources.each do |resource| %>
-              <div class="small-6 columns res-index">
-
-                <div class="panel panel-index">
-                  <%= link_to(resource_path(resource)) do  %>
-                <div class="orbit-top-index">
-                  <div class="info-orbit-index">
-
-
-                  <div class="orbit-title">
-                      <h4> <%= truncate(resource.title, length: 60) %> </h4>
-                    </div>
-
-                    <div class="index-desc"><%= truncate(resource.description,length: 240) %>  </div>
-                  </div>
-                  <div class="res-image-orbit-index">
-                    <% if resource.image? %>
-                        <%= image_tag(resource.image_url, :class => "") %>
-                    <% else %>
-                        <%= image_tag('CS.gif', :class => "") %>
-                    <% end %>
-                  </div>
-
-                </div>
-                  <% end %>
-                <div class="orbit-middle-index">
-
-                    <div class="middle-left"><%= link_to "#{resource.category.name} / #{resource.subcategory.name}", subcategory_path(resource.subcategory.id) %></div>
-                    <div class="middle-center">Level <span><%= resource.level %></span></div>
-                    <div class="middle-right">Cost <span><%= resource.cost %></span></div>
-
-                </div>
-                <div class="orbit-bottom-index">
-                  <div class="orbit-added-index"><p>Added by <span><%= resource.user.username %></span> | <%= nice_time(resource.created_at)   %> <span class="index-comments"> <i class="fa fa-comments-o"></i>  Comments  <%= resource.posts.count %></span> </p></div>
-                  <div class="orbit-likes-index">
-                    <span> <i class="fa fa-thumbs-o-up fa-lg">     </i><%= resource.likes.count %>  </span>
-
-                  </div>
-                </div>
-                </div>
-
-              </div>
-          <% end %>
-     </div>
-   </div>
   </div>
-        </div>
-
-
-
-
 </div>
-
-<!-- Template like orbit -->
-

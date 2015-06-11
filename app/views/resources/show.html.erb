@@ -1,144 +1,27 @@
-<div class="row container-full">
-  <div class="small-12 columns">
-    <h1 class="center">Web Learning Repository</h1>
+<%= javascript_include_tag 'side_nav.js.erb' %>
+<div class="container">
 
-    <div class="row">
-      <div class="small-9 columns panel">
-        <div class="row">
+  <div class="row">
 
-          <div class="small-4 columns">
-            <div class="res-image-show">
-              <% if @resource.image? %>
-                  <%= image_tag(@resource.image_url, :class => "") %>
-              <% else %>
-                  <%= image_tag('CS.gif', :class => "") %>
-              <% end %>
-            </div>
-          </div>
-          <div class="small-8 columns" id="show-info">
-            <div class="show-info panel">
-              <div class="show-top">
-                <div id="show-title"><h3> <%= @resource.title %></h3></div>
-
-
-                <div id="show-desc"><%= @resource.description %></div>
-              </div>
-              <div class="show-middle">
-                <div class="show-right">
-                  <div>Level: <span><%= @resource.level %></span></div>
-                  <div>Cost: <span><%= @resource.cost %></span></div>
-
-
-                  <div>Year: <span><%= @resource.year %></span></div>
-                </div>
-                <div class="show-left">
-                  <div>Category:
-                    <span><%= link_to "#{@resource.category.name} / #{@resource.subcategory.name}", subcategory_path(@resource.subcategory.id) %></span>
-                  </div>
-
-
-                  <div>Type: <span> <%= medium_texter(@resource.medium) %></span></div>
-
-
-                  <div>Source: <span> <%= @resource.source %></span></div>
-                </div>
-
-
-              </div>
-              <div class="res-show-bottom">
-                <div class="orbit-added">
-                  <p>Added by <span><%= @resource.user.username %></span> | <%= nice_time(@resource.created_at) %>
-                    <span class="index-comments"> <i class="fa fa-comments-o"></i>  Comments  <%= @resource.posts.count %></span>
-                  </p></div>
-
-                <div class="show-like">
-                  <div class='orbit-likes-index'>
-
-                    <span> <i class="fa fa-thumbs-o-up fa-lg"> </i><%= @resource.likes.count %>  </span>
-
-                  </div>
-                  <% if user_likes(current_user, @resource.id) %>
-
-                      <%= render 'likes' %>
-
-                  <% end %>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 columns">
-
-            <%= render 'posts' %>
-          </div>
-        </div>
-
-
+    <div class="col-md-2">
+      <%= render 'layouts/sidenav' %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+      <%= render 'resources/resource' %>
       </div>
-
-
-
-
-
-      <div class="small-3 columns">
-        <ul class='tabs' data-tab>
-          <li class="tab-title active"><a href='#tab1'><h5>Liked</h5></a></li>
-          <li class="tab-title"><a href='#tab2'><h5>Latest</h5></a></li>
-        </ul>
-        <div class="tabs-content">
-
-
-          <% @resources_with_likes.each do |resource| %>
-              <div class="latest content active" id="tab1">
-                <%= link_to(resource_path(resource)) do %>
-                    <div class="latest-title">
-                      <%= resource.title %>
-                      <%= resource.likes.count %>
-                    </div>
-                    <div class="latest-img">
-                      <% if resource.image? %>
-                          <%= image_tag(resource.image_url, :class => "") %>
-                      <% else %>
-                          <%= image_tag('CS.gif', :class => "") %>
-                      <% end %>
-                    </div>
-                <% end %>
-              </div>
-          <% end %>
-
-
-          <% @resources.each do |resource| %>
-              <div class="latest content" id="tab2">
-                <%= link_to(resource_path(resource)) do %>
-                    <div class="latest-title">
-                      <%= resource.title %>
-                    </div>
-                    <div class="latest-img">
-                      <% if resource.image? %>
-                          <%= image_tag(resource.image_url, :class => "") %>
-                      <% else %>
-                          <%= image_tag('CS.gif', :class => "") %>
-                      <% end %>
-                    </div>
-                <% end %>
-              </div>
-          <% end %>
-        </div>
-
-
-
-
-
-
-
-
-
-
+      <div class="row">
+        <%= render 'resources/posts' %>
       </div>
 
     </div>
+
+    <div class="col-md-2">
+      <%= render 'resources/latest' %>
+    </div>
+
+
   </div>
 </div>
+
+
