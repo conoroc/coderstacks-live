@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20131021133715376) do
     t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "post_id"
+    t.integer  "review_id"
   end
 
   create_table "likes", force: true do |t|
@@ -51,14 +51,6 @@ ActiveRecord::Schema.define(version: 20131021133715376) do
     t.datetime "updated_at"
     t.integer  "resource_id"
     t.integer  "user_id"
-  end
-
-  create_table "posts", force: true do |t|
-    t.integer  "user_id"
-    t.text     "content"
-    t.integer  "resource_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "rates", force: true do |t|
@@ -103,6 +95,15 @@ ActiveRecord::Schema.define(version: 20131021133715376) do
     t.integer  "user_id"
     t.string   "cost"
     t.integer  "likes_count"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "score"
   end
 
   create_table "subcategories", force: true do |t|

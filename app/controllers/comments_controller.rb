@@ -13,8 +13,8 @@ class CommentsController < ApplicationController
   def create
 
     @resource = Resource.find(params[:resource_id])
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
+    @review = Review.find(params[:review_id])
+    @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.resource_id = @resource.id
 
@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def comment_params
-    params.require(:comment).permit(:content, :post_id, :resource_id, :user_id)
+    params.require(:comment).permit(:content, :review_id, :resource_id, :user_id)
   end
 
 

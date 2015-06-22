@@ -1,9 +1,0 @@
-<h4>Comments</h4>
-<%= render :partial => @resource.posts %>
-<%= form_for([@resource, @resource.posts.build]) do |f| %>
-    <div>
-      <%= f.label 'Comment On This Resource' %>
-      <%= f.text_area :content, :cols => 20, :rows => 2, :id => 'comment-txt' %>
-    </div>
-    <p><%= f.submit "Add Comment", class: 'tiny button success' %></p>
-<% end %>

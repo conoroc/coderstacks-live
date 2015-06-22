@@ -44,6 +44,14 @@
       <%= medium_texter(@resource.medium) %>
     </div>
     <div class="col-md-6">
+      <%=  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= @resource.average_rating %><small class="tiny"> (<%= @resource.reviews.count %> <%= 'Review'.pluralize(@resource.reviews.count)  %>  )</small>
+    </div>
+    <div class="col-md-6">
       <%= @resource.user.username %> | <%= nice_time(@resource.created_at) %>
     </div>
   </div>

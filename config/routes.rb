@@ -7,7 +7,7 @@ Coder::Application.routes.draw do
 
   resources :resources do
     resources :likes
-    resources :posts do
+    resources :reviews do
       resources :comments
     end
   end
