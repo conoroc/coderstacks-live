@@ -18,34 +18,35 @@
             <small class="tiny"> (<%= time_ago_in_words(review.created_at) %> ago)</small>
           </div>
           <div class="score">
-            <b><%= review.score %></b>
-          </div>
+            <div class="raty-stars" data-score=<%= review.score %>>
+            </div>
 
-          <% if current_user?(review.user) %>
-              <%= link_to 'Delete', resource_review_path(@resource, review), :confirm => 'Are you sure?', :method => :delete %>
-          <% end %>
+            <% if current_user?(review.user) %>
+                <%= link_to 'Delete', resource_review_path(@resource, review), :class => 'btn btn-sml btn-warning', :confirm => 'Are you sure?', :method => :delete %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="reply-container col-lg-offset-2">
-    <% unless review.comments.empty? %>
+    <div class="reply-container col-lg-offset-2">
+      <% unless review.comments.empty? %>
           <%= render review.comments %>
-    <% end %>
+      <% end %>
 
-    <% if review %>
-        <%= form_for([@resource, review, review.comments.build], id: "posts") do |f| %>
-            <div>
-              <%= f.label 'Add a Reply' %>
-              <%= f.text_area :content, :cols => 20, :rows => 2, :id => 'commtxt' %>
-            </div>
+      <% if review %>
+          <%= form_for([@resource, review, review.comments.build], id: "posts") do |f| %>
+              <div>
+                <%= f.label 'Add a Reply' %>
+                <%= f.text_area :content, :cols => 20, :rows => 2, :id => 'commtxt' %>
+              </div>
 
-            <p><%= f.submit "Reply", class: 'btn btn-info' %></p>
-        <% end %>
+              <p><%= f.submit "Reply", class: 'btn btn-info' %></p>
+          <% end %>
 
-    <% end %>
+      <% end %>
 
+    </div>
   </div>
 </div>

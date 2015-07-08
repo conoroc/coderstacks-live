@@ -5,6 +5,7 @@ class Resource < ActiveRecord::Base
 
 
   has_many :likes
+  has_many :favorites, :as => :favorited
   belongs_to :user
   belongs_to :subcategory
   has_many :reviews, dependent: :destroy
@@ -25,7 +26,11 @@ class Resource < ActiveRecord::Base
   # end
 
   def average_rating
-    reviews.average(:score).round(2, :up).to_f
+    if reviews.blank?
+      0
+    else
+      reviews.average(:score).round(2, :up).to_f
+    end
 
   end
 

@@ -12,7 +12,7 @@ Coder::Application.routes.draw do
     end
   end
 
-
+  resources :favorite_resources, only: [:create, :destroy]
 
   resources :categories
   resources :subcategories

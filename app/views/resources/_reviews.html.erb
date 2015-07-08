@@ -1,10 +1,18 @@
 <h4>Reviews</h4>
-<%= render :partial => @resource.reviews %>
+
+<% if @resource.reviews.blank? %>
+    <div class="well text-center">
+      <h3>No reviews just yet, would you like to add the first!</h3>
+    </div>
+<% else %>
+    <%= render :partial => @resource.reviews %>
+<% end %>
 <%= form_for([@resource, @resource.reviews.build]) do |f| %>
     <div>
       <%= f.label 'Review This Resource' %>
       <%= f.text_area :content, :cols => 20, :rows => 2, :id => 'comment-txt' %>
-      <%= f.select :score, options_for_select(1..10) %>
+
+      <div id="star-rating"></div>
     </div>
-    <p><%= f.submit "Add Review", class: 'tiny button success' %></p>
+    <p><%= f.submit "Add Review", class: 'btn btn-success' %></p>
 <% end %>

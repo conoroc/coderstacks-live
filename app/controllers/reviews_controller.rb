@@ -28,6 +28,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @resource = Resource.find(params[:resource_id])
+    @review.destroy
+    redirect_to(@resource, :notice => 'Review was successfully deleted.')
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
